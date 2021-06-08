@@ -1,4 +1,4 @@
-package TP1ejercicioscomplementarios;
+package EjerciciosComplementariosLevel1;
 import java.util.*;
 
 public class ejercicio9{

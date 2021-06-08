@@ -1,4 +1,4 @@
-package TP1ejercicioscomplementarios;
+package EjerciciosComplementariosLevel1;
 import java.util.*;
 
 public class ejercicio6{
@@ -24,7 +24,7 @@ public class ejercicio6{
         } else if (numero1 != 0 && numero2 == 0){
 
             System.out.println("Cualquier numero distinto de 0 elevado a 0 es 1 !");
-            
+
         } else {
             int potencia = numero1;
             for(int i = 1; i < numero2; i = i + 1){
