@@ -1,0 +1,11 @@
+
+
+
+#creando la primera clase
+
+public class ServicioSueldo {
+    public static void main ( String[] args){
+        Empleado emp1 = new Empleado();
+        System
+    }
+}
