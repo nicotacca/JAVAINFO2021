@@ -29,37 +29,47 @@ public class ejercicio5{
         List<Empleado> empleados = new ArrayList<Empleado>();
 
         //TRATAMIENTO DEL ARCHIVO
-        String path = "C:\\TACCA\\INFORMATORIO\\ETAPA 3\\INFORMATORIOJAVA2021\\JAVAINFO2021\\EjercicioPropuesto5\\empleado.txt";
+        String path = "D:\\INFORMATORIO\\ETAPA 3\\JAVA\\ejercicios\\JAVAINFO2021\\EjercicioPropuesto5\\empleado.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(path)))  {
             String line = br.readLine();
 
             //CARGA DE LA LISTA DE EMPLEADOS
             while (line != null) {
                 empleados.add(crearEmpleado(line));
-                System.out.println((empleados.get(0)).nombre);
                 line = br.readLine(); 
             }
-        
+
+        System.out.println("");
         //EMPLEADOS CUYO APELLIDO ARRANCAN CON UNA LETRA DADA
-        String letra = new String("T");
+
+        String letra = new String("F");
+        System.out.println("EMPLEADOS CUYO APELLIDO ARRANCA CON " + letra);
         List<Empleado> nuevaLista = new ArrayList<Empleado>(letraApellido(empleados, letra));
         
-        System.out.println((nuevaLista.get(0)).nombre + " this");
-        System.out.println((nuevaLista.get(1)).nombre + " this");
-        
-        //OBTENCION DE EDAD DEL EMPLEADO
-        System.out.println(edadEmpleado(empleados.get(0)) + " edad del empleado.");
+        for (Empleado emp : nuevaLista) {
+            System.out.println(emp.nombre);
+        }
+        System.out.println("");
 
         //EMPLEADO MAS JOVEN
-        System.out.println(empleadoMasJoven(empleados).apellido + " empleado mas joven.");
+        System.out.println("EMPLEADO MAS JOVEN");
+        System.out.println(empleadoMasJoven(empleados).apellido);
+        System.out.println("");
 
         //EMPLEADO MAS VIEJO
-        System.out.println(empleadoMasViejo(empleados).apellido + " empleado mas viejo.");
+        System.out.println("EMPLEADO MAS VIEJO");
+        System.out.println(empleadoMasViejo(empleados).apellido);
+        System.out.println("");
 
         //EMPLEADO QUE MAS COBRA
+        System.out.println("EMPLEADO QUE MAS COBRA");
+        System.out.println(empleadoMasGana(empleados).apellido);
+        System.out.println("");
 
         //EMPLEADO QUE MENOS COBRA
-
+        System.out.println("EMPLEADO QUE MENOS COBRA");
+        System.out.println(empleadoMenosGana(empleados).apellido);
+        System.out.println("");
 
         }
     }
@@ -76,17 +86,11 @@ public class ejercicio5{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate localDate = LocalDate.parse(listLinea.get(2), formatter);
         
-        //System.out.println(localDate);  //default, print ISO_LOCAL_DATE
-        //System.out.println(localDate.getYear());  //default, print ISO_LOCAL_DATE
-        //System.out.println(localDate.getMonthValue());  //default, print ISO_LOCAL_DATE
-        //System.out.println(localDate.getDayOfMonth());  //default, print ISO_LOCAL_DATE
-
         //SE CONVIERTE SUELDO A BIGDECIMAL
         BigDecimal num = new BigDecimal(listLinea.get(3));
         
         //INSTANCIA EMPLEADO Y AGREGADO A LISTA DE EMPLEADOS
         Empleado empleado = new Empleado(listLinea.get(0), listLinea.get(1), localDate, num);
-        //empleados.add(empleado);
         
         return empleado;
     }
@@ -165,6 +169,34 @@ public class ejercicio5{
 
         return empViejo;
 
+    }
+
+    public static Empleado empleadoMasGana(List<Empleado> listaEmpleados) {
+        
+        Empleado empMasRemunerado = listaEmpleados.get(0);
+
+        for (Empleado emp : listaEmpleados) {
+
+            if ( (emp.sueldo).compareTo(empMasRemunerado.sueldo) > 0 ) {
+                empMasRemunerado = emp;
+            }
+        }
+
+        return empMasRemunerado;
+    }
+
+    public static Empleado empleadoMenosGana(List<Empleado> listaEmpleados) {
+        
+        Empleado empMenosRemunerado = listaEmpleados.get(0);
+
+        for (Empleado emp : listaEmpleados) {
+
+            if ( (emp.sueldo).compareTo(empMenosRemunerado.sueldo) < 0 ) {
+                empMenosRemunerado = emp;
+            }
+        }
+
+        return empMenosRemunerado;
     }
 
 

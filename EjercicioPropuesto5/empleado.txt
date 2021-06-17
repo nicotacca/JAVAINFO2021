@@ -1,4 +1,4 @@
 Nicolas,Tacca,16-06-1993,45000.52
 Augusto,Franco,10-05-1980,5400.93
-Pablo,Gonzales,10-10-1950,100501.65
+Pablo,Gonzales,10-10-1950,100501.64
 Pablo,Taccahara,10-10-1930,100501.65
